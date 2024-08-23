@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHR to USD and USD to KHR Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .converter {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h2>Currency Converter</h2>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <button onclick="convertToUSD()">KHR to USD</button>
+    <button onclick="convertToKHR()">USD to KHR</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const exchangeRate = 4100; // Example rate, adjust as needed
+
+    function convertToUSD() {
+        const amountKHR = document.getElementById('amount').value;
+        const amountUSD = (amountKHR / exchangeRate).toFixed(2);
+        document.getElementById('result').innerText = `${amountKHR} KHR = $${amountUSD} USD`;
+    }
+
+    function convertToKHR() {
+        const amountUSD = document.getElementById('amount').value;
+        const amountKHR = (amountUSD * exchangeRate).toFixed(2);
+        document.getElementById('result').innerText = `$${amountUSD} USD = ${amountKHR} KHR`;
+    }
+</script>
+
+</body>
+</html>
